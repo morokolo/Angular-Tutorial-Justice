@@ -55,18 +55,33 @@ module.exports = function(config) {
       'PhantomJS'
     ],
 
+    preprocessors: {
+      'app/scripts/**/*.js': 'coverage'
+    }, 
+
     // Which plugins to enable
     plugins: [
+      "karma-coverage",
+      "karma-phantomjs-launcher",
+      'karma-chrome-launcher',
       'karma-phantomjs-launcher',
       'karma-jasmine'
     ],
 
+    reporters: ['progress', 'coverage'],
+
+    coverageReporter: {
+      reporters: [
+          {type: 'lcov', dir: 'coverage/'},
+          {type: 'cobertura', dir: 'coverage/', file: 'cobertura.xml'}
+      ]
+    },
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
     singleRun: false,
 
     colors: true,
-
+    
     // level of logging
     // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
     logLevel: config.LOG_INFO,
