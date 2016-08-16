@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - '0.10'
+  - '0.10' 
 env:
   global:
   - CCODECLIMATE_REPO_TOKEN=6c11b06de2e1ee23efc42c6fd4d2ee520de80a10c12d3133ec279d8005cdf60d codeclimate-test-reporter < lcov.info
