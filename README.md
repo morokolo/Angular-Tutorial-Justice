@@ -1,5 +1,10 @@
 # Angular-Tutorial-Justice 
 
+<a href="https://codeclimate.com/repos/57b306dee87f4b5a7a000db0/feed"><img src="https://codeclimate.com/repos/57b306dee87f4b5a7a000db0/badges/4f8588a7dc85d53699fc/gpa.svg" /></a>
+
+<a href="https://codeclimate.com/repos/57b306dee87f4b5a7a000db0/coverage"><img src="https://codeclimate.com/repos/57b306dee87f4b5a7a000db0/badges/4f8588a7dc85d53699fc/coverage.svg" /></a>
+
+<a href="https://codeclimate.com/repos/57b306dee87f4b5a7a000db0/feed"><img src="https://codeclimate.com/repos/57b306dee87f4b5a7a000db0/badges/4f8588a7dc85d53699fc/issue_count.svg" /></a>
 
 # Dependency Installlation
 Run `npm install && bower install`
