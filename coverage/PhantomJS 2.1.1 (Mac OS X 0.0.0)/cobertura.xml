@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
+<coverage lines-valid="6"  lines-covered="6"  line-rate="1"  branches-valid="0"  branches-covered="0"  branch-rate="1"  timestamp="1471350160587" complexity="0" version="0.1">
+<sources>
+	<source>/Users/justicematotoka/Tangent/Projects/Angular-Tutorial-Justice</source>
+</sources>
+<packages>
+	<package name="scripts"  line-rate="1"  branch-rate="1" >
+	<classes>
+		<class name="app.js"  filename="app/scripts/app.js"  line-rate="1"  branch-rate="1" >
+		<methods>
+			<method name="(anonymous_1)"  hits="2"  signature="()V" >
+				<lines><line number="20"  hits="2" /></lines>
+			</method>
+		</methods>
+		<lines>
+			<line number="11"  hits="1"  branch="false" />
+			<line number="21"  hits="2"  branch="false" />
+		</lines>
+		</class>
+	</classes>
+	</package>
+	<package name="scripts.controllers"  line-rate="1"  branch-rate="1" >
+	<classes>
+		<class name="about.js"  filename="app/scripts/controllers/about.js"  line-rate="1"  branch-rate="1" >
+		<methods>
+			<method name="(anonymous_1)"  hits="1"  signature="()V" >
+				<lines><line number="11"  hits="1" /></lines>
+			</method>
+		</methods>
+		<lines>
+			<line number="10"  hits="1"  branch="false" />
+			<line number="12"  hits="1"  branch="false" />
+		</lines>
+		</class>
+		<class name="main.js"  filename="app/scripts/controllers/main.js"  line-rate="1"  branch-rate="1" >
+		<methods>
+			<method name="(anonymous_1)"  hits="1"  signature="()V" >
+				<lines><line number="11"  hits="1" /></lines>
+			</method>
+		</methods>
+		<lines>
+			<line number="10"  hits="1"  branch="false" />
+			<line number="12"  hits="1"  branch="false" />
+		</lines>
+		</class>
+	</classes>
+	</package>
+</packages>
+</coverage>
