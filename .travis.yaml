@@ -9,3 +9,4 @@ before_script:
   - bower install
 after_script:
   - codeclimate-test-reporter < coverage/**/lcov.info
+  
