@@ -15,5 +15,5 @@ Run `grunt` for building and `grunt serve` for running the app grunt serve:dist 
 # Testing Application
 grunt test
 karma start test/karma.conf.js
-karma start test/karma.ci.conf.js
+karma start test/karma.ci.conf.js  
 
