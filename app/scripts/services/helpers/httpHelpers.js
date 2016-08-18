@@ -35,16 +35,6 @@ angular.module('angularTutorialJusticeApp')
                 headers: headers
             });
         };
-    	httpHelper.delete = function (url, data) {
-    			data.apikey = UserAuthenticationService.getToken();
-    			url += '?' + $.param(data);
-    			return $http({
-    				method: 'DELETE',
-    				url: url,
-    				data: $.param(data),
-    				headers: headers
-    			});
-    	};
         httpHelper.get = function (url, data) {
             if(data.projectId !== undefined){
                 var id =data.projectId;
