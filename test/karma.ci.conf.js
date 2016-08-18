@@ -16,7 +16,9 @@ module.exports = function(config) {
     frameworks: [
       'jasmine'
     ],
-
+    preprocessors: {
+      'app/scripts/**/*.js': 'coverage'
+    }, 
     // list of files / patterns to load in the browser
     files: [
       // bower:js
@@ -54,10 +56,6 @@ module.exports = function(config) {
     browsers: [
       'PhantomJS'
     ],
-
-    preprocessors: {
-      'app/scripts/**/*.js': 'coverage'
-    }, 
 
     // Which plugins to enable
     plugins: [
