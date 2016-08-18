@@ -41,12 +41,10 @@
         return deferred.promise;
       };
 
-        projectAPI.getProjectbyId = function (projectId, projectObject) {
-          //console.log('the ID ' + projectId);
-
+        projectAPI.updateProject = function (projectId, projectObject) {
           var deferred = $q.defer(),
               url = PROJECT_SERVICE_BASE_URI + 'projects/'+projectId+'/';
-              $http.get(url, projectObject, UserAuthenticationService.getAuthHeaders())
+              $http.put(url, projectObject, UserAuthenticationService.getAuthHeaders())
               .success(function (response, status, headers, config) {
                   if (response) {
                     console.log('Success responsse' + response);

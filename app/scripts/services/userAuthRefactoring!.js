@@ -1,43 +1,47 @@
 'use strict';
-
- angular.module('angularTutorialJusticeApp')
-  .service('UserAuthenticationService', function ($http,$rootScope,$cookies, $cookieStore, $q,AUTH_SERVICE_BASE_URI) {
-    var service = this;
-
-        // refactroring the login services
-        service.login = function (username, password) {
+/**
+ * @ngdoc service
+ * @name app.serviceRequestAuth
+ * @description
+ * # serviceRequestAuth
+ * Service in the app.
+ */
+angular.module('app')
+    .service('serviceRequestAuth', function ($q, $http, $state, $cookieStore, AUTHENTICATION_SERVICE_URL) {
+        var api = {};
+        api.auth = function (username, password) {
             var deferred = $q.defer();
             $http({
-                url: AUTH_SERVICE_BASE_URI + 'api-token-auth/',
+                url: AUTHENTICATION_SERVICE_URL + 'login/',
                 method: 'POST',
                 contentType: "application/json",
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 data: $.param({
                     "username": username,
-                    "password": password
+                    "password": password,
+                    "type" : "Employee"
                 })
             }).success(function (response) {
-                service.setToken(response.token);
+                api.setToken(response.data.token);
                 deferred.resolve();
             }).error(function (response) {
-                service.logout();
+                api.logout();
                 deferred.reject(response);
             });
             return deferred.promise;
         };
-
-        service.logout = function(){
+        api.logout = function(){
             $cookieStore.remove('token');
         };
-        service.setToken = function (token) {
+        api.setToken = function (token) {
             $cookieStore.put('token', token);
         };
-        service.getToken = function () {
+        api.getToken = function () {
             return $cookieStore.get('token');
         };
-        service.isLoggedInResolve = function () {
+        api.isLoggedInResolve = function () {
             var deferred = $q.defer();
-            if (service.getToken() === undefined) {
+            if (api.getToken() === undefined) {
                 deferred.reject();
             } else {
                 deferred.resolve();
@@ -46,10 +50,8 @@
                 $state.go('login');
             });
         };
-        service.isLoggedIn = function () {
-            return service.getToken() !== undefined;
+        api.isLoggedIn = function () {
+            return api.getToken() !== undefined;
         };
-        return service;  
-
-
-  });
+        return api;
+    });

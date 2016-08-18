@@ -8,7 +8,7 @@
  * Controller of the angularTutorialJusticeApp
  */
 angular.module('angularTutorialJusticeApp')
-  .controller('LoginCtrl', function ($scope,$location,UserAuthenticationService) {
+  .controller('LoginCtrl', function ($scope,$cookies,$cookieStore, $location,UserAuthenticationService) {
     
     $scope.login = function () {
 
