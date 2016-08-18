@@ -25,16 +25,17 @@ angular.module('angularTutorialJusticeApp')
             });
         };
         httpHelper.update = function (url, data) {
-            data.apikey = UserAuthenticationService.getToken();
-            url += '?' + $.param(data);
+            var projectId = data.projectId;
+            var projectObject = data.projectObject;
+            url +=  projectId+'/';
             return $http({
                 method: 'PUT',
                 url: url,
-                data: $.param(data),
+                data: projectObject,
                 headers: headers
             });
         };
-    		httpHelper.delete = function (url, data) {
+    	httpHelper.delete = function (url, data) {
     			data.apikey = UserAuthenticationService.getToken();
     			url += '?' + $.param(data);
     			return $http({
@@ -43,10 +44,12 @@ angular.module('angularTutorialJusticeApp')
     				data: $.param(data),
     				headers: headers
     			});
-    		};
+    	};
         httpHelper.get = function (url, data) {
-            console.log(url);
-            //headers += 'Authorization :' + UserAuthenticationService.getToken();
+            if(data.projectId !== undefined){
+                var id =data.projectId;
+                url +=  id + '/';
+            }
             return $http({
                 method: 'GET',
                 url: url,

@@ -4,75 +4,30 @@
   .service('ProjectServices', function ($http,$rootScope,$cookies,$q,PROJECT_SERVICE_BASE_URI, httpHelper, UserAuthenticationService	) {
     var projectAPI = this;
 
-    // projectAPI.getProjects = function () {
-
-    //   var deferred = $q.defer(),
-    //       url = PROJECT_SERVICE_BASE_URI + 'projects/';
-    //       $http.get(url, UserAuthenticationService.getAuthHeaders())
-    //       .success(function (response, status, headers, config) {
-    //           if (response) {
-    //               deferred.resolve(response);
-    //           }
-    //           deferred.resolve(response, status, headers, config);
-    //       }).error(function (response, status, headers, config) {
-
-    //           deferred.reject(response, status, headers, config);
-    //       });
-
-    //     return deferred.promise;
-    //   };
-
       // refactoring the get projects function
       projectAPI.getProjects = function() {
             var data = {};
             var url = PROJECT_SERVICE_BASE_URI + 'projects/';
             return httpHelper.get(url, data);
-        };
-
-
-
-
-
-
-
-
-      projectAPI.getProjectbyId = function (projectId) {
-        //console.log('the ID ' + projectId);
-        var deferred = $q.defer(),
-            url = PROJECT_SERVICE_BASE_URI + 'projects/'+projectId+'/';
-            $http.get(url, UserAuthenticationService.getAuthHeaders())
-            .success(function (response, status, headers, config) {
-                if (response) {
-                    deferred.resolve(response);
-                }
-                deferred.resolve(response, status, headers, config);
-            }).error(function (response, status, headers, config) {
-              
-                deferred.reject(response, status, headers, config);
-            });
-
-        return deferred.promise;
       };
 
-        projectAPI.updateProject = function (projectId, projectObject) {
-          var deferred = $q.defer(),
-              url = PROJECT_SERVICE_BASE_URI + 'projects/'+projectId+'/';
-              $http.put(url, projectObject, UserAuthenticationService.getAuthHeaders())
-              .success(function (response, status, headers, config) {
-                  if (response) {
-                    console.log('Success responsse' + response);
-                      deferred.resolve(response);
-                  }
-                  deferred.resolve(response, status, headers, config);
-              }).error(function (response, status, headers, config) {
-                    console.log('Success responsse' + response);
-                  
-                  deferred.reject(response, status, headers, config);
-              });
-
-        return deferred.promise;
+      // refactoring the get projects by ID function
+      projectAPI.getProjectbyId = function(projectId) {
+            var data = {
+                          'projectId': projectId
+                       };
+            var url = PROJECT_SERVICE_BASE_URI + 'projects/';
+            return httpHelper.get(url, data);
       };
 
-
+      // refactoring the update project function
+      projectAPI.updateProject = function(projectId, projectObject) {
+            var data = {
+                          'projectId': projectId,
+                          'projectObject': projectObject
+                       };
+            var url = PROJECT_SERVICE_BASE_URI + 'projects/';
+            return httpHelper.update(url, data);
+      };
 
   });

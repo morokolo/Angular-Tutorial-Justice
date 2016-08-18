@@ -14,17 +14,16 @@ angular.module('angularTutorialJusticeApp')
 		
     	ProjectServices.getProjectbyId(projectID)
 		.then(function (response) {
-			$scope.project =response;
+			$scope.project =response.data;
 		})
 		.catch(function (response) {
-			console.log(response);			
+			console.log(response.data);			
 		});
 
 
 		
 
 		$scope.updateProject = function () {
-			console.log('clicked');
 		var projectObject = $scope.project;
 		var id = $scope.project.pk;
 			ProjectServices.updateProject(id, projectObject)
