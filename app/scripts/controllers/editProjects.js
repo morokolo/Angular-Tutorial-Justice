@@ -20,7 +20,11 @@ angular.module('angularTutorialJusticeApp')
 			console.log(response);			
 		});
 
-		ProjectServices.updateProject = function () {
+
+		
+
+		$scope.updateProject = function () {
+			console.log('clicked');
 		var projectObject = $scope.project;
 		var id = $scope.project.pk;
 			ProjectServices.updateProject(id, projectObject)

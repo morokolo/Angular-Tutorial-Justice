@@ -41,5 +41,27 @@
         return deferred.promise;
       };
 
+        projectAPI.getProjectbyId = function (projectId, projectObject) {
+          //console.log('the ID ' + projectId);
+
+          var deferred = $q.defer(),
+              url = PROJECT_SERVICE_BASE_URI + 'projects/'+projectId+'/';
+              $http.get(url, projectObject, UserAuthenticationService.getAuthHeaders())
+              .success(function (response, status, headers, config) {
+                  if (response) {
+                    console.log('Success responsse' + response);
+                      deferred.resolve(response);
+                  }
+                  deferred.resolve(response, status, headers, config);
+              }).error(function (response, status, headers, config) {
+                    console.log('Success responsse' + response);
+                  
+                  deferred.reject(response, status, headers, config);
+              });
+
+        return deferred.promise;
+      };
+
+
 
   });
