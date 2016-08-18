@@ -1,26 +1,39 @@
 'use strict';
 
  angular.module('angularTutorialJusticeApp')
-  .service('ProjectServices', function ($http,$rootScope,$cookies,$q,PROJECT_SERVICE_BASE_URI,UserAuthenticationService	) {
+  .service('ProjectServices', function ($http,$rootScope,$cookies,$q,PROJECT_SERVICE_BASE_URI, httpHelper, UserAuthenticationService	) {
     var projectAPI = this;
 
-    projectAPI.getProjects = function () {
+    // projectAPI.getProjects = function () {
 
-      var deferred = $q.defer(),
-          url = PROJECT_SERVICE_BASE_URI + 'projects/';
-          $http.get(url, UserAuthenticationService.getAuthHeaders())
-          .success(function (response, status, headers, config) {
-              if (response) {
-                  deferred.resolve(response);
-              }
-              deferred.resolve(response, status, headers, config);
-          }).error(function (response, status, headers, config) {
+    //   var deferred = $q.defer(),
+    //       url = PROJECT_SERVICE_BASE_URI + 'projects/';
+    //       $http.get(url, UserAuthenticationService.getAuthHeaders())
+    //       .success(function (response, status, headers, config) {
+    //           if (response) {
+    //               deferred.resolve(response);
+    //           }
+    //           deferred.resolve(response, status, headers, config);
+    //       }).error(function (response, status, headers, config) {
 
-              deferred.reject(response, status, headers, config);
-          });
+    //           deferred.reject(response, status, headers, config);
+    //       });
 
-        return deferred.promise;
-      };
+    //     return deferred.promise;
+    //   };
+
+      // refactoring the get projects function
+      projectAPI.getProjects = function() {
+            var data = {};
+            var url = PROJECT_SERVICE_BASE_URI + 'projects/';
+            return httpHelper.get(url, data);
+        };
+
+
+
+
+
+
 
 
       projectAPI.getProjectbyId = function (projectId) {

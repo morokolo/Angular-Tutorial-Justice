@@ -34,6 +34,7 @@
         };
         service.getToken = function () {
             return $cookieStore.get('token');
+
         };
         service.isLoggedInResolve = function () {
             var deferred = $q.defer();

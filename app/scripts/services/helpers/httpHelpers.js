@@ -6,12 +6,16 @@
  * # HTTP helper for managing requests.
  * Service in the app.
  */
-angular.module('app')
-    .service('httpHelper', function HttpHelper($http, $location, serviceRequestAuth) {
+angular.module('angularTutorialJusticeApp')
+    .service('httpHelper', function HttpHelper($http, $location, UserAuthenticationService) {
         var httpHelper = {};
-        var headers = {'Content-Type': 'application/x-www-form-urlencoded'};
+        var headers = {
+                        'Content-Type': 'application/json',
+                        'Authorization': UserAuthenticationService.getToken()
+                      };//addded this here since this header are needed to perform further tasks
+
         httpHelper.post = function (url, data) {
-            data.apikey = serviceRequestAuth.getToken();
+            data.apikey = UserAuthenticationService.getToken();
             url += '?' + $.param(data);
             return $http({
                 method: 'POST',
@@ -21,7 +25,7 @@ angular.module('app')
             });
         };
         httpHelper.update = function (url, data) {
-            data.apikey = serviceRequestAuth.getToken();
+            data.apikey = UserAuthenticationService.getToken();
             url += '?' + $.param(data);
             return $http({
                 method: 'PUT',
@@ -31,7 +35,7 @@ angular.module('app')
             });
         };
     		httpHelper.delete = function (url, data) {
-    			data.apikey = serviceRequestAuth.getToken();
+    			data.apikey = UserAuthenticationService.getToken();
     			url += '?' + $.param(data);
     			return $http({
     				method: 'DELETE',
@@ -41,8 +45,8 @@ angular.module('app')
     			});
     		};
         httpHelper.get = function (url, data) {
-            data.apikey = serviceRequestAuth.getToken();
-            url += '?' + $.param(data);
+            console.log(url);
+            //headers += 'Authorization :' + UserAuthenticationService.getToken();
             return $http({
                 method: 'GET',
                 url: url,

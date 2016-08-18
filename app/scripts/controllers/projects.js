@@ -13,12 +13,14 @@ angular.module('angularTutorialJusticeApp')
 
     	ProjectServices.getProjects()
 		.then(function (response) {
-			$scope.projects =response;
-			console.log(response);
+			$scope.projects =response.data;
 		})
 		.catch(function (response) {
-			console.log(response);
-						
+			console.log(response.data);				
 		});
+
+
+
+
 
   });
