@@ -6,6 +6,8 @@
 
 <a href="https://codeclimate.com/repos/57b306dee87f4b5a7a000db0/feed"><img src="https://codeclimate.com/repos/57b306dee87f4b5a7a000db0/badges/4f8588a7dc85d53699fc/issue_count.svg" /></a>
 
+[![Build Status](https://travis-ci.org/morokolo/Angular-Tutorial-Justice.svg?branch=development)](https://travis-ci.org/morokolo/Angular-Tutorial-Justice)
+
 # Dependency Installlation
 Run `npm install && bower install`
 
