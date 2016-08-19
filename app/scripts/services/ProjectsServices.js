@@ -30,9 +30,9 @@
 
       // refactoring the get projects by ID function
       projectAPI.getDeleteProjectById = function(projectId) {
-            var data = {
-                          'projectId': projectId
-                       };
+            var dataObject = {
+                              'projectId': projectId
+                             };
             return httpHelper.delete(url, data);
       };
 
