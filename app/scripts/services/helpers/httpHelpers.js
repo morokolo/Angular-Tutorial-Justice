@@ -36,10 +36,8 @@ angular.module('angularTutorialJusticeApp')
             });
         };
         httpHelper.delete = function (url, data) {
-               if(data.projectId !== undefined){
-                    var id =data.projectId;
-                    url +=  id + '/';
-                }
+                var deleteProjectId =data.projectId;
+                url += deleteProjectId +'/';
                 return $http({
                     method: 'DELETE',
                     url: url,
