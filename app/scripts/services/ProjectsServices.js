@@ -30,4 +30,14 @@
             return httpHelper.update(url, data);
       };
 
+      // refactoring the get projects by ID function
+      projectAPI.getDeleteProjectById = function(projectId) {
+            var data = {
+                          'projectId': projectId
+                       };
+            var url = PROJECT_SERVICE_BASE_URI + 'projects/';
+            return httpHelper.delete(url, data);
+      };
+
+
   });

@@ -16,7 +16,11 @@
                 <td>{{project.description}}</td>
                 <td>{{project.is_billable}}</td>
                 <td>{{project.is_active}}</td>
-                <td><a href="#/edit-project/{{project.pk}}" class="btn">&nbsp;<i class="glyphicon glyphicon-edit"></i>Edit</a></td>
+                <td>
+                    <a href="#/edit-project/{{project.pk}}" class="btn">&nbsp;<i class="glyphicon glyphicon-edit"></i>Edit</a>
+                    <button ng-controller="ProjectsCtrl" ng-click="deleteProject(project.pk)">Delete</button>
+
+                </td>
             </tr>
         </tbody>
         </table>
