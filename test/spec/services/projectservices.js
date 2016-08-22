@@ -34,6 +34,18 @@ describe('Service: ProjectServices', function () {
     });
 
     it('should get a single project from the services', function () {
+        var respond = {
+                'pk': 35,
+                'title': 'Justice Unit Tester',
+                'description': 'To run unit tests on the projects',
+                'start_date': '2016-08-22',
+                'end_date': '2016-08-22',
+                'is_billable': true,
+                'is_active': true,
+                'task_set': [],
+                'resource_set': []
+            };
+        
         $httpBackend.expectGET('http://projectservice.staging.tangentmicroservices.com/api/v1/projects/3/')
             .respond({
                 'pk': 35,
@@ -49,7 +61,7 @@ describe('Service: ProjectServices', function () {
 
         ProjectServices.getProjectbyId(35)
             .then(function (dataResponse) {
-                expect(dataResponse).toBeDefined();
+                expect(dataResponse).toEqual(respond);
             });
     });
 

@@ -22,6 +22,7 @@
 
       // refactoring the update project function
       projectAPI.updateProject = function(projectId, projectObject) {
+        console.log('projectId' + projectId);
             var data = {
                           'projectId': projectId,
                           'projectObject': projectObject
