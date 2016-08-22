@@ -8,9 +8,9 @@
  * Controller of the angularTutorialJusticeApp
  */
 angular.module('angularTutorialJusticeApp')
-  .controller('EditProjectsCtrl', function ($scope, $route, $location, ProjectServices) {
+  .controller('EditProjectsCtrl', function ($scope, $route, $location, $routeParams, ProjectServices) {
     
-		var projectID = $route.current.params.projectID;
+		var projectID = $routeParams.projectID;
 		
     	ProjectServices.getProjectbyId(projectID)
 		.then(function (response) {
@@ -22,8 +22,7 @@ angular.module('angularTutorialJusticeApp')
 
 		$scope.updateProject = function () {
 		var projectObject = $scope.project;
-		var id = $scope.project.pk;
-			ProjectServices.updateProject(id, projectObject)
+			ProjectServices.updateProject(projectID, projectObject)
 			.then(function (response) {
 				$scope.project =response;
 				$location.path('/projects');

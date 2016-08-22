@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: ProjectsCtrl', function () {
+describe('Controller: EditProjectsCtrl', function () {
 
     // load the controller's module
     beforeEach(module('angularTutorialJusticeApp'));
@@ -22,33 +22,39 @@ describe('Controller: ProjectsCtrl', function () {
 
     }));
 
-    it('should have a project list', function () {
+
+    // it('should fire login()', function (){
+    //         controller = $controller('EditProjectsCtrl', {
+    //         $scope: $scope
+    //     });
+    //     $scope.updateProject();
+    // });
+
+    it('should get the selected item', function () {
+        //expect(ProjectServices.getProjectbyId(35)).toHaveBeenCalled();  
+      });
+
+
+
+    it('should fire updateProject()', function (){
         $httpBackend.whenGET(/^.*/).respond(200, '');
         $rootScope.$digest();
 
-        controller = $controller('ProjectsCtrl', {
+        controller = $controller('EditProjectsCtrl', {
             $scope: $scope
         });
 
-     $httpBackend.expectGET('http://projectservice.staging.tangentmicroservices.com/api/v1/projects/')
+     $httpBackend.expectPUT('http://projectservice.staging.tangentmicroservices.com/api/v1/projects/35/')
             .respond(200);
 
-        ProjectServices.getProjects()
+        ProjectServices.updateProject(35)
             .then(function (response) {
                 var dataResponse = response[0];
                 expect(dataResponse).toBeDefined();
             });
 
+
     });
-
-
-    it('should fire deleteProject()', function (){
-            controller = $controller('ProjectsCtrl', {
-            $scope: $scope
-        });
-        $scope.deleteProject();
-  });
-
 
 
 });
