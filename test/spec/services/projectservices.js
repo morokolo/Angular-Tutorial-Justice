@@ -47,10 +47,25 @@ describe('Service: ProjectServices', function () {
                 'resource_set': []
             });
 
-        ProjectServices.getProjectbyId(3)
+        ProjectServices.getProjectbyId(35)
             .then(function (dataResponse) {
                 expect(dataResponse).toBeDefined();
             });
     });
+
+    it('should update a single project from the services', function () {
+            var response = {
+                id: 35,
+                title: 'test title updatess'
+            };
+        $httpBackend.expectPUT('http://projectservice.staging.tangentmicroservices.com/api/v1/projects/35/')
+            .respond(200);
+        ProjectServices.updateProject(35,{id: 35, title: 'test title update'})
+            .then(function (dataResponse) {
+                expect(dataResponse).toEqual(response);
+            });
+    });
+
+
 });
 
