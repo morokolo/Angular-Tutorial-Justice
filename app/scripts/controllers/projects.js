@@ -20,12 +20,11 @@ angular.module('angularTutorialJusticeApp')
 		});
 
 	
-		$scope.deleteProject = function () {
-			var projectId = $scope.project.pk;
+		$scope.deleteProject = function (projectId) {
 
-			var deleteUser = $window.confirm('Are you absolutely sure you want to delete?');
+			var deleteProject = $window.confirm('Are you absolutely sure you want to delete?');
 
-		    if (deleteUser) {
+		    if (deleteProject) {
 				ProjectServices.getDeleteProjectById(projectId)
 				.then(function (response) {
 					//make magic happen here

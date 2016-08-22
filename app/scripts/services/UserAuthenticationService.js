@@ -49,6 +49,7 @@
         };
         service.isLoggedIn = function () {
             return service.getToken() !== undefined;
+            console.log('test this');
         };
         return service;  
 

@@ -10,10 +10,13 @@
 angular.module('angularTutorialJusticeApp')
   .controller('LoginCtrl', function ($scope,$cookies,$cookieStore, $location,UserAuthenticationService) {
     
+	var isAuthenticated = false;
+    
     $scope.login = function () {
 
     	UserAuthenticationService.login($scope.username,$scope.password)
 		.then(function () {
+			
 			$location.path('/projects');
 		})
 		.catch(function (response) {

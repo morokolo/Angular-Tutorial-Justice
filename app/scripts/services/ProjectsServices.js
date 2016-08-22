@@ -3,10 +3,11 @@
  angular.module('angularTutorialJusticeApp')
   .service('ProjectServices', function ($http,$rootScope,$cookies,$q,PROJECT_SERVICE_BASE_URI, httpHelper, UserAuthenticationService	) {
     var projectAPI = this;
+    var data = {};
     var url = PROJECT_SERVICE_BASE_URI + 'projects/';
       // refactoring the get projects function
       projectAPI.getProjects = function() {
-            var data = {};
+            
             return httpHelper.get(url, data);
       };
 

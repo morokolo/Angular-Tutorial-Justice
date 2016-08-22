@@ -14,16 +14,6 @@ angular.module('angularTutorialJusticeApp')
                         'Authorization': UserAuthenticationService.getToken()
                       };//addded this here since this header are needed to perform further tasks
 
-        httpHelper.post = function (url, data) {
-            data.apikey = UserAuthenticationService.getToken();
-            url += '?' + $.param(data);
-            return $http({
-                method: 'POST',
-                url: url,
-                data: $.param(data),
-                headers: headers
-            });
-        };
         httpHelper.update = function (url, data) {
             var projectId = data.projectId;
             var projectObject = data.projectObject;
@@ -36,8 +26,6 @@ angular.module('angularTutorialJusticeApp')
             });
         };
         httpHelper.delete = function (url, data) {
-                var deleteProjectId =data.projectId;
-                url += deleteProjectId +'/';
                 return $http({
                     method: 'DELETE',
                     url: url,
